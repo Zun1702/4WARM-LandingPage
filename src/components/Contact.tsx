@@ -90,7 +90,7 @@ const Contact = () => {
               variants={staggerItem}
               className="text-4xl lg:text-5xl font-bold mb-6"
             >
-              Let's Work <span className="gradient-text">Together</span>
+              Let&apos;s Work <span className="gradient-text">Together</span>
             </motion.h2>
             <motion.div 
               variants={staggerItem}
@@ -101,7 +101,7 @@ const Contact = () => {
               variants={staggerItem}
               className="text-xl text-white/80 leading-relaxed mb-12"
             >
-              Ready to capture your warmest moments? We'd love to hear about your vision and bring it to life through our lens.
+              Ready to capture your warmest moments? We&apos;d love to hear about your vision and bring it to life through our lens.
             </motion.p>
 
             <motion.div variants={staggerItem} className="space-y-6 mb-12">
@@ -185,7 +185,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Thank You!</h3>
-                <p className="text-white/80">Your message has been sent successfully. We'll get back to you soon!</p>
+                <p className="text-white/80">Your message has been sent successfully. We&apos;ll get back to you soon!</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">

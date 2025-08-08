@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { staggerContainer, staggerItem, imageReveal } from '@/lib/animations';
+import { staggerContainer, staggerItem } from '@/lib/animations';
 import Image from 'next/image';
 
 // Sample photography data - will be replaced with real images

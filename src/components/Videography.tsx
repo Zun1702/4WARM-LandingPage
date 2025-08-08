@@ -104,7 +104,7 @@ const Videography = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {videographyData.map((video, index) => (
+          {videographyData.map((video, _) => (
             <motion.div
               key={video.id}
               variants={staggerItem}

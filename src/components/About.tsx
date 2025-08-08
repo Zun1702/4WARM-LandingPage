@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInLeft, fadeInRight, staggerContainer, staggerItem } from '@/lib/animations';
-import Image from 'next/image';
+import { fadeInLeft, staggerContainer, staggerItem } from '@/lib/animations';
 
 const About = () => {
   return (
