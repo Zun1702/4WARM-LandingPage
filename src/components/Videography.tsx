@@ -9,12 +9,12 @@ import Image from 'next/image';
 const videographyData = [
   {
     id: 1,
-    title: "Nocturnal - Vibrant Summer Clouds",
+    title: "Summer Photoshoot: Metro Fashion",
     category: "Commercial",
     thumbnail: "/images/videography/video1.mp4",
-    duration: "0:34",
+    duration: "0:16",
     videoUrl: "/images/videography/video1.mp4",
-    description: "Where T-shirts tell a story of summer, youth, and friendship."
+    description: "Go behind the scenes with us as we bring our summer collection to life."
   },
   {
     id: 2,
@@ -120,11 +120,11 @@ const Videography = () => {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     style={{
                       objectPosition: 
-                        video.id === 1 ? 'center center' :
+                        video.id === 1 ? 'center 20%' :
                         video.id === 2 ? 'center 30%' :
-                        video.id === 3 ? 'center 20%' :
+                        video.id === 3 ? 'center 10%' :
                         video.id === 4 ? 'center center' :
-                        video.id === 5 ? 'center 40%' :
+                        video.id === 5 ? 'center 10%' :
                         'center center'
                     }}
                     muted
@@ -134,7 +134,7 @@ const Videography = () => {
                     onLoadedMetadata={(e) => {
                       // Set specific thumbnail timestamps immediately
                       const currentTime = (() => {
-                        if (video.id === 1) return 3; // 0:03
+                        if (video.id === 1) return 5; // 0:05
                         if (video.id === 2) return 16; // 0:16
                         if (video.id === 5) return 1; // 0:01
                         return 0;
@@ -144,7 +144,7 @@ const Videography = () => {
                     onLoadedData={(e) => {
                       // Double-check thumbnail is set after data loads
                       const currentTime = (() => {
-                        if (video.id === 1) return 3;
+                        if (video.id === 1) return 5;
                         if (video.id === 2) return 16;
                         if (video.id === 5) return 1;
                         return 0;
@@ -156,7 +156,7 @@ const Videography = () => {
                     onCanPlayThrough={(e) => {
                       // Final check when video is fully ready
                       const currentTime = (() => {
-                        if (video.id === 1) return 3;
+                        if (video.id === 1) return 5;
                         if (video.id === 2) return 16;
                         if (video.id === 5) return 1;
                         return 0;
@@ -168,7 +168,7 @@ const Videography = () => {
                       e.currentTarget.pause();
                       // Return to thumbnail timestamp
                       const currentTime = (() => {
-                        if (video.id === 1) return 3;
+                        if (video.id === 1) return 5;
                         if (video.id === 2) return 16;
                         if (video.id === 5) return 1;
                         return 0;
@@ -177,7 +177,7 @@ const Videography = () => {
                     }}
                   >
                     <source src={`${video.thumbnail}#t=${
-                      video.id === 1 ? '3' : 
+                      video.id === 1 ? '5' : 
                       video.id === 2 ? '16' : 
                       video.id === 5 ? '1' : '0'
                     }`} type="video/mp4" />
@@ -323,7 +323,7 @@ const Videography = () => {
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           style={{
                             objectPosition: 
-                              video.id === 1 ? 'center center' :
+                              video.id === 1 ? 'center 25%' :
                               video.id === 2 ? 'center 30%' :
                               video.id === 3 ? 'center 20%' :
                               video.id === 4 ? 'center center' :
@@ -336,7 +336,7 @@ const Videography = () => {
                           preload="metadata"
                           onLoadedMetadata={(e) => {
                             const currentTime = (() => {
-                              if (video.id === 1) return 3;
+                              if (video.id === 1) return 5;
                               if (video.id === 2) return 16;
                               if (video.id === 5) return 1;
                               return 0;
@@ -347,7 +347,7 @@ const Videography = () => {
                           onMouseLeave={(e) => {
                             e.currentTarget.pause();
                             const currentTime = (() => {
-                              if (video.id === 1) return 3;
+                              if (video.id === 1) return 5;
                               if (video.id === 2) return 16;
                               if (video.id === 5) return 1;
                               return 0;
@@ -356,7 +356,7 @@ const Videography = () => {
                           }}
                         >
                           <source src={`${video.thumbnail}#t=${
-                            video.id === 1 ? '3' : 
+                            video.id === 1 ? '5' : 
                             video.id === 2 ? '16' : 
                             video.id === 5 ? '1' : '0'
                           }`} type="video/mp4" />
