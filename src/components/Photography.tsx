@@ -11,43 +11,37 @@ const photographyData = [
     id: 1,
     title: "Creative Portrait",
     category: "Portrait",
-    image: "/images/photography/photo1.jpg",
-    aspectRatio: "portrait"
+    image: "/images/photography/photo1.jpg"
   },
   {
     id: 2,
     title: "Natural Moment",
     category: "Lifestyle",
-    image: "/images/photography/photo2.jpg",
-    aspectRatio: "landscape"
+    image: "/images/photography/photo2.jpg"
   },
   {
     id: 3,
     title: "Artistic Vision",
     category: "Art",
-    image: "/images/photography/photo3.jpg",
-    aspectRatio: "square"
+    image: "/images/photography/photo3.jpg"
   },
   {
     id: 4,
     title: "Professional Session",
     category: "Portrait",
-    image: "/images/photography/photo4.jpg",
-    aspectRatio: "portrait"
+    image: "/images/photography/photo4.jpg"
   },
   {
     id: 5,
     title: "Creative Composition",
     category: "Art",
-    image: "/images/photography/photo5.jpg",
-    aspectRatio: "landscape"
+    image: "/images/photography/photo5.jpg"
   },
   {
     id: 6,
     title: "Captured Essence",
     category: "Lifestyle",
-    image: "/images/photography/photo6.jpg",
-    aspectRatio: "square"
+    image: "/images/photography/photo6.jpg"
   }
 ];
 
@@ -84,34 +78,33 @@ const Photography = () => {
           </motion.p>
         </motion.div>
 
-        {/* Masonry Gallery */}
+        {/* Photo Grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6"
         >
           {photographyData.map((photo) => (
             <motion.div
               key={photo.id}
               variants={staggerItem}
-              className="break-inside-avoid group cursor-pointer"
+              className="group cursor-pointer"
               onClick={() => setSelectedImage(photo.id)}
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 group-hover:scale-[1.03] transform-gpu">
-                <div className={`relative ${
-                  photo.aspectRatio === 'portrait' ? 'aspect-[3/4]' :
-                  photo.aspectRatio === 'landscape' ? 'aspect-[4/3]' : 'aspect-square'
-                }`}>
+                {/* Square aspect ratio container */}
+                <div className="relative aspect-square">
                   <Image
                     src={photo.image}
                     alt={photo.title}
                     fill
                     className={`object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75 ${
-                      photo.id === 1 ? 'object-[38%_center]' : 'object-center'
+                      photo.id === 1 ? 'object-[26%_center]' : 
+                      photo.id === 5 ? 'object-[47%_top]' : 'object-center'
                     }`}
                   />
                   
