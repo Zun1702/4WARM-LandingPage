@@ -54,7 +54,7 @@ const Contact = () => {
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
       ),
-      url: 'https://www.facebook.com/trungdoan1702/',
+      url: 'https://www.facebook.com/profile.php?id=61579213411852',
       color: 'hover:text-blue-600'
     },
     {
@@ -113,7 +113,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Phone</h3>
-                  <p className="text-white/70">+84 078 717 1600</p>
+                  <p className="text-white/70">+84 031 563 5875</p>
                 </div>
               </div>
 
@@ -125,7 +125,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Email</h3>
-                  <p className="text-white/70">zunzun@4warm.studio</p>
+                  <p className="text-white/70">Agency4WARM@gmail.com</p>
                 </div>
               </div>
 
@@ -138,7 +138,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Location</h3>
-                  <p className="text-white/70">Ho Chi Minh City</p>
+                  <p className="text-white/70">141 Dien Bien Phu, Ho Chi Minh City</p>
                 </div>
               </div>
             </motion.div>

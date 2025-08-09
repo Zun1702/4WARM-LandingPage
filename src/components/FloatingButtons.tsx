@@ -28,7 +28,7 @@ const FloatingButtons = () => {
   };
 
   const openFacebookMessenger = () => {
-    window.open('https://m.me/trungdoan1702', '_blank');
+    window.open('https://m.me/817316288120824', '_blank');
   };
 
   return (

@@ -38,7 +38,7 @@ const videographyData = [
     id: 4,
     title: "Product Showcase",
     category: "Commercial",
-    thumbnail: "https://images.unsplash.com/photo-1486312338219-ce68e2c6b696?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
     duration: "1:45",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
     description: "Sleek product video highlighting key features and benefits."
