@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { heroTitle, heroSubtitle, heroCTA } from '@/lib/animations';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
@@ -105,16 +106,19 @@ const Hero = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-7xl mx-auto mt-20">
         {/* Main Heading with improved typography */}
-        <motion.h1 
+        <motion.div
           variants={heroTitle}
           initial="hidden"
           animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-8 tracking-tight leading-none"
+          className="mb-8"
         >
-          <span className="inline-block bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-            4WARM
-          </span>
-        </motion.h1>
+          {/* Brand Name */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight leading-none">
+            <span className="inline-block bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+              4WARM
+            </span>
+          </h1>
+        </motion.div>
 
         {/* Enhanced Subtitle */}
         <motion.div

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { navSlide } from '@/lib/animations';
+import Image from 'next/image';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -72,11 +73,22 @@ const Navigation = () => {
             <div className="flex-shrink-0">
               <button
                 onClick={() => scrollToSection('#hero')}
-                className={`text-2xl font-bold transition-colors duration-300 ${
-                  isScrolled ? 'gradient-text' : 'text-white'
-                }`}
+                className="flex items-center gap-1 transition-all duration-300 hover:scale-105"
               >
-                4WARM
+                <div className="relative w-8 h-8 lg:w-10 lg:h-10">
+                  <Image
+                    src={isScrolled ? "/images/logo/logo-colorful.png" : "/images/logo/logo-whitecolor.png"}
+                    alt="4WARM Logo"
+                    fill
+                    className="object-contain transition-all duration-300"
+                    priority
+                  />
+                </div>
+                <span className={`text-2xl font-bold transition-colors duration-300 ${
+                  isScrolled ? 'gradient-text' : 'text-white'
+                }`}>
+                  4WARM
+                </span>
               </button>
             </div>
 

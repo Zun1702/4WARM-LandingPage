@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Photography from '@/components/Photography';
 import Videography from '@/components/Videography';
 import Contact from '@/components/Contact';
+import FloatingButtons from '@/components/FloatingButtons';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Photography />
       <Videography />
       <Contact />
+      <FloatingButtons />
     </main>
   );
 }
