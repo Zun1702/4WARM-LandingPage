@@ -23,7 +23,7 @@ const videographyData = [
     thumbnail: "/images/videography/video2.mp4",
     duration: "0:44",
     videoUrl: "/images/videography/video2.mp4",
-    description: "The ultimate wide-leg pants that are super comfy and stylish. Now available in new colors!"
+    description: "The ultimate wide-leg pants that are super comfy and stylish."
   },
   {
     id: 3,
