@@ -47,6 +47,8 @@ const photographyData = [
 
 const Photography = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [showAllModal, setShowAllModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   return (
     <section id="photography" className="py-20 px-6 bg-white">
@@ -151,7 +153,10 @@ const Photography = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="text-center mt-16"
         >
-          <button className="group relative px-8 py-4 bg-gradient-warm text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-warm-red/30 overflow-hidden">
+          <button 
+            onClick={() => setShowAllModal(true)}
+            className="group relative px-8 py-4 bg-gradient-warm text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-warm-red/30 overflow-hidden"
+          >
             <span className="relative z-10">View All Photography</span>
             <div className="absolute inset-0 bg-gradient-warm-reverse rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
@@ -161,6 +166,143 @@ const Photography = () => {
           </p>
         </motion.div>
       </div>
+
+      {/* View All Photography Modal */}
+      {showAllModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 overflow-y-auto"
+          onClick={() => setShowAllModal(false)}
+        >
+          <div className="min-h-screen p-6 flex flex-col">
+            {/* Modal Header */}
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="flex items-center justify-between mb-8 pt-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  All <span className="gradient-text">Photography</span>
+                </h2>
+                <p className="text-white/70">Explore our complete photography portfolio</p>
+              </div>
+              
+              <button
+                onClick={() => setShowAllModal(false)}
+                className="w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-white/30"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+
+            {/* Category Filter */}
+            <motion.div
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-wrap gap-3 justify-center mb-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {['All', 'Portrait', 'Lifestyle', 'Art'].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-gradient-warm text-white shadow-lg scale-105'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
+
+            {/* Photography Grid */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto w-full flex-1"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {photographyData
+                .filter(photo => selectedCategory === 'All' || photo.category === selectedCategory)
+                .map((photo, index) => (
+                  <motion.div
+                    key={photo.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.1 * index, duration: 0.4 }}
+                    className="group cursor-pointer"
+                    onClick={() => {
+                      setSelectedImage(photo.id);
+                      setShowAllModal(false);
+                    }}
+                  >
+                    <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-[1.05]">
+                      <div className="relative aspect-square">
+                        <Image
+                          src={photo.image}
+                          alt={photo.title}
+                          fill
+                          className={`object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75 ${
+                            photo.id === 1 ? 'object-[26%_center]' : 
+                            photo.id === 5 ? 'object-[47%_top]' : 'object-center'
+                          }`}
+                        />
+                        
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        
+                        {/* Category Badge */}
+                        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
+                          <div className="bg-white/90 backdrop-blur-sm text-primary-charcoal px-2 py-1 rounded-full text-xs font-medium shadow-lg">
+                            {photo.category}
+                          </div>
+                        </div>
+                        
+                        {/* Center Icon */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-75 group-hover:scale-100">
+                          <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-2xl">
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg>
+                          </div>
+                        </div>
+                        
+                        {/* Title */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                          <h3 className="text-white font-bold text-sm leading-tight">{photo.title}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Footer */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-center mt-8 pb-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <p className="text-white/60 text-sm">
+                Click on any image to view in detail
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Lightbox Modal */}
       {selectedImage && (

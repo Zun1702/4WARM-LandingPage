@@ -67,13 +67,13 @@ const About = () => {
             </motion.p>
 
             <motion.div variants={staggerItem} className="grid grid-cols-2 gap-6 mb-8">
-              <div className="text-center p-4 rounded-xl bg-gradient-to-br from-warm-yellow/10 to-warm-pink/10">
-                <div className="text-3xl font-bold gradient-text mb-2">500+</div>
-                <div className="text-sm text-primary-charcoal/70">Happy Clients</div>
+              <div className="group text-center p-4 rounded-xl bg-gradient-to-br from-warm-yellow/10 to-warm-pink/10 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-warm-yellow/20 hover:to-warm-pink/20 cursor-pointer">
+                <div className="text-3xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">500+</div>
+                <div className="text-sm text-primary-charcoal/70 group-hover:text-primary-charcoal transition-colors duration-300">Happy Clients</div>
               </div>
-              <div className="text-center p-4 rounded-xl bg-gradient-to-br from-warm-pink/10 to-warm-red/10">
-                <div className="text-3xl font-bold gradient-text mb-2">1000+</div>
-                <div className="text-sm text-primary-charcoal/70">Projects Completed</div>
+              <div className="group text-center p-4 rounded-xl bg-gradient-to-br from-warm-pink/10 to-warm-red/10 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:from-warm-pink/20 hover:to-warm-red/20 cursor-pointer">
+                <div className="text-3xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">1000+</div>
+                <div className="text-sm text-primary-charcoal/70 group-hover:text-primary-charcoal transition-colors duration-300">Projects Completed</div>
               </div>
             </motion.div>
 

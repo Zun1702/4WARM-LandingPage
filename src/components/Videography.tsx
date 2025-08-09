@@ -5,66 +5,68 @@ import { useState } from 'react';
 import { staggerContainer, staggerItem } from '@/lib/animations';
 import Image from 'next/image';
 
-// Sample videography data
+// Local videography data - Updated with specific content
 const videographyData = [
   {
     id: 1,
-    title: "Wedding Highlight Reel",
-    category: "Wedding",
-    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    duration: "3:45",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "A beautiful wedding story capturing the love and joy of Sarah & John's special day."
+    title: "Nocturnal - Vibrant Summer Clouds",
+    category: "Commercial",
+    thumbnail: "/images/videography/video1.mp4",
+    duration: "0:34",
+    videoUrl: "/images/videography/video1.mp4",
+    description: "Where T-shirts tell a story of summer, youth, and friendship."
   },
   {
     id: 2,
-    title: "Corporate Brand Video",
-    category: "Corporate",
-    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
-    duration: "2:30",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "Professional corporate video showcasing innovation and team collaboration."
+    title: "PUSH PUSH: Our New Wide-Leg Pants Collection",
+    category: "Commercial",
+    thumbnail: "/images/videography/video2.mp4",
+    duration: "0:44",
+    videoUrl: "/images/videography/video2.mp4",
+    description: "The ultimate wide-leg pants that are super comfy and stylish. Now available in new colors!"
   },
   {
     id: 3,
-    title: "Event Documentary",
-    category: "Event",
-    thumbnail: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    duration: "5:20",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "Dynamic coverage of a music festival capturing the energy and atmosphere."
+    title: "Behind the Scenes: A Summer Photoshoot Look",
+    category: "Lifestyle",
+    thumbnail: "/images/videography/video3.mp4",
+    duration: "0:17",
+    videoUrl: "/images/videography/video3.mp4",
+    description: "Go behind the scenes with us for our new summer photoshoot!"
   },
   {
     id: 4,
-    title: "Product Showcase",
-    category: "Commercial",
-    thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
-    duration: "1:45",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "Sleek product video highlighting key features and benefits."
+    title: "Summer Reverie 2025",
+    category: "Lookbook",
+    thumbnail: "/images/videography/video4.mp4",
+    duration: "0:59",
+    videoUrl: "/images/videography/video4.mp4",
+    description: "Escape into a dream with our new \"Summer Reverie\" collection."
   },
   {
     id: 5,
-    title: "Travel Documentary",
-    category: "Travel",
-    thumbnail: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    duration: "4:15",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "Cinematic journey through breathtaking landscapes and cultures."
+    title: "ANNA DO's Ultimate Party Look",
+    category: "Lookbook",
+    thumbnail: "/images/videography/video5.mp4",
+    duration: "0:10",
+    videoUrl: "/images/videography/video5.mp4",
+    description: "Dazzle at any party with our stunning new collection."
   },
   {
     id: 6,
-    title: "Fashion Film",
-    category: "Fashion",
-    thumbnail: "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
-    duration: "2:50",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Sample YouTube embed
-    description: "Artistic fashion film showcasing the latest collection with style and elegance."
+    title: "Minimalist Jewelry Look",
+    category: "Lookbook",
+    thumbnail: "/images/videography/video6.mp4",
+    duration: "0:15",
+    videoUrl: "/images/videography/video6.mp4",
+    description: "Enjoy a quiet coffee date with us and explore our new minimalist jewelry collection."
   }
 ];
 
 const Videography = () => {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+  const [showAllModal, setShowAllModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   return (
     <section id="videography" className="py-20 px-6 bg-white">
@@ -112,17 +114,78 @@ const Videography = () => {
               onClick={() => setSelectedVideo(video.id)}
             >
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
-                <div className="relative aspect-video">
-                  <Image
-                    src={video.thumbnail}
-                    alt={video.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                <div className="relative aspect-square">
+                  {/* Video Preview */}
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    style={{
+                      objectPosition: 
+                        video.id === 1 ? 'center center' :
+                        video.id === 2 ? 'center 30%' :
+                        video.id === 3 ? 'center 20%' :
+                        video.id === 4 ? 'center center' :
+                        video.id === 5 ? 'center 40%' :
+                        'center center'
+                    }}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onLoadedMetadata={(e) => {
+                      // Set specific thumbnail timestamps immediately
+                      const currentTime = (() => {
+                        if (video.id === 1) return 3; // 0:03
+                        if (video.id === 2) return 16; // 0:16
+                        if (video.id === 5) return 1; // 0:01
+                        return 0;
+                      })();
+                      e.currentTarget.currentTime = currentTime;
+                    }}
+                    onLoadedData={(e) => {
+                      // Double-check thumbnail is set after data loads
+                      const currentTime = (() => {
+                        if (video.id === 1) return 3;
+                        if (video.id === 2) return 16;
+                        if (video.id === 5) return 1;
+                        return 0;
+                      })();
+                      if (Math.abs(e.currentTarget.currentTime - currentTime) > 0.5) {
+                        e.currentTarget.currentTime = currentTime;
+                      }
+                    }}
+                    onCanPlayThrough={(e) => {
+                      // Final check when video is fully ready
+                      const currentTime = (() => {
+                        if (video.id === 1) return 3;
+                        if (video.id === 2) return 16;
+                        if (video.id === 5) return 1;
+                        return 0;
+                      })();
+                      e.currentTarget.currentTime = currentTime;
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      // Return to thumbnail timestamp
+                      const currentTime = (() => {
+                        if (video.id === 1) return 3;
+                        if (video.id === 2) return 16;
+                        if (video.id === 5) return 1;
+                        return 0;
+                      })();
+                      e.currentTarget.currentTime = currentTime;
+                    }}
+                  >
+                    <source src={`${video.thumbnail}#t=${
+                      video.id === 1 ? '3' : 
+                      video.id === 2 ? '16' : 
+                      video.id === 5 ? '1' : '0'
+                    }`} type="video/mp4" />
+                  </video>
                   
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-gradient-warm/60 transition-all duration-500"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Play Button Overlay - Scales with video */}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-gradient-warm/60 transition-all duration-700 group-hover:scale-110 z-10"></div>
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
                     <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
                       <svg className="w-6 h-6 text-primary-charcoal ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
@@ -131,7 +194,7 @@ const Videography = () => {
                   </div>
 
                   {/* Duration Badge */}
-                  <div className="absolute bottom-4 right-4 px-2 py-1 bg-black/70 backdrop-blur-sm text-white text-sm rounded font-medium">
+                  <div className="absolute bottom-4 right-4 px-2 py-1 bg-black/70 backdrop-blur-sm text-white text-sm rounded font-medium z-20">
                     {video.duration}
                   </div>
                 </div>
@@ -163,12 +226,194 @@ const Videography = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="text-center mt-16"
         >
-          <button className="group relative px-8 py-4 bg-gradient-warm text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-warm-red/30">
+          <button 
+            onClick={() => setShowAllModal(true)}
+            className="group relative px-8 py-4 bg-gradient-warm text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-warm-red/30"
+          >
             <span className="relative z-10">View All Videos</span>
             <div className="absolute inset-0 bg-gradient-warm-reverse rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </motion.div>
       </div>
+
+      {/* View All Videos Modal */}
+      {showAllModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 overflow-y-auto"
+          onClick={() => setShowAllModal(false)}
+        >
+          <div className="min-h-screen p-6 flex flex-col">
+            {/* Modal Header */}
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="flex items-center justify-between mb-8 pt-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  All <span className="gradient-text">Videography</span>
+                </h2>
+                <p className="text-white/70">Explore our complete video portfolio</p>
+              </div>
+              
+              <button
+                onClick={() => setShowAllModal(false)}
+                className="w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-white/30"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+
+            {/* Category Filter */}
+            <motion.div
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-wrap gap-3 justify-center mb-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {['All', 'Commercial', 'Lifestyle', 'Lookbook'].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-gradient-warm text-white shadow-lg scale-105'
+                      : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
+
+            {/* Video Grid */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full flex-1"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {videographyData
+                .filter(video => selectedCategory === 'All' || video.category === selectedCategory)
+                .map((video, index) => (
+                  <motion.div
+                    key={video.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.1 * index, duration: 0.4 }}
+                    className="group cursor-pointer"
+                    onClick={() => {
+                      setSelectedVideo(video.id);
+                      setShowAllModal(false);
+                    }}
+                  >
+                    <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-[1.03]">
+                      <div className="relative aspect-video">
+                        {/* Video Preview */}
+                        <video
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          style={{
+                            objectPosition: 
+                              video.id === 1 ? 'center center' :
+                              video.id === 2 ? 'center 30%' :
+                              video.id === 3 ? 'center 20%' :
+                              video.id === 4 ? 'center center' :
+                              video.id === 5 ? 'center 40%' :
+                              'center center'
+                          }}
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onLoadedMetadata={(e) => {
+                            const currentTime = (() => {
+                              if (video.id === 1) return 3;
+                              if (video.id === 2) return 16;
+                              if (video.id === 5) return 1;
+                              return 0;
+                            })();
+                            e.currentTarget.currentTime = currentTime;
+                          }}
+                          onMouseEnter={(e) => e.currentTarget.play()}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.pause();
+                            const currentTime = (() => {
+                              if (video.id === 1) return 3;
+                              if (video.id === 2) return 16;
+                              if (video.id === 5) return 1;
+                              return 0;
+                            })();
+                            e.currentTarget.currentTime = currentTime;
+                          }}
+                        >
+                          <source src={`${video.thumbnail}#t=${
+                            video.id === 1 ? '3' : 
+                            video.id === 2 ? '16' : 
+                            video.id === 5 ? '1' : '0'
+                          }`} type="video/mp4" />
+                        </video>
+                        
+                        {/* Play Button Overlay */}
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-gradient-warm/60 transition-all duration-700 z-10"></div>
+                        <div className="absolute inset-0 flex items-center justify-center z-20">
+                          <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
+                            <svg className="w-6 h-6 text-primary-charcoal ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+
+                        {/* Duration Badge */}
+                        <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-sm text-white text-sm rounded font-medium z-20">
+                          {video.duration}
+                        </div>
+
+                        {/* Category Badge */}
+                        <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-4 group-hover:translate-x-0 z-20">
+                          <div className="bg-white/90 backdrop-blur-sm text-primary-charcoal px-2 py-1 rounded-full text-xs font-medium shadow-lg">
+                            {video.category}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-4 bg-black/80 backdrop-blur-sm text-white">
+                        <h3 className="text-lg font-semibold mb-1 group-hover:text-warm-yellow transition-colors duration-300">
+                          {video.title}
+                        </h3>
+                        <p className="text-white/70 text-sm leading-relaxed line-clamp-2">
+                          {video.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Footer */}
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-center mt-8 pb-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <p className="text-white/60 text-sm">
+                Click on any video to play in full screen
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Video Modal */}
       {selectedVideo && (
@@ -193,15 +438,16 @@ const Videography = () => {
               
               return (
                 <>
-                  {/* Video Embed */}
-                  <iframe
-                    src={video.videoUrl}
-                    title={video.title}
+                  {/* Video Player */}
+                  <video
                     className="w-full h-full rounded-lg"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                    controls
+                    autoPlay
+                    preload="metadata"
+                  >
+                    <source src={video.videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                   
                   {/* Close Button */}
                   <button

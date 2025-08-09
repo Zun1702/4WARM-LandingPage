@@ -139,17 +139,25 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced CTA Section */}
+        {/* Enhanced CTA Section - Perfectly Balanced Buttons */}
         <motion.div
           variants={heroCTA}
           initial="hidden"
           animate="visible"
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4 max-w-md mx-auto"
         >
-          {/* Primary CTA */}
-          <button className="group relative px-8 py-4 bg-white text-primary-charcoal font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/30 min-w-[200px]">
+          {/* Primary CTA - Scroll to Photography */}
+          <button 
+            className="group relative bg-white text-primary-charcoal font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/30 w-full sm:w-52 h-14 flex items-center justify-center"
+            onClick={() => {
+              const photographySection = document.getElementById('photography');
+              if (photographySection) {
+                photographySection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <span className="relative z-10 flex items-center justify-center gap-2">
-              Explore Our Work
+              <span>Explore Our Work</span>
               <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
@@ -157,77 +165,157 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-warm rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
           </button>
 
-          {/* Secondary CTA */}
-          <button className="group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white font-semibold rounded-full text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/50 focus:outline-none focus:ring-4 focus:ring-white/20 min-w-[200px] backdrop-blur-sm">
+          {/* Secondary CTA - Scroll to Contact */}
+          <button 
+            className="group relative bg-transparent border-2 border-white/40 text-white font-semibold rounded-full text-lg transition-all duration-300 hover:bg-white/10 hover:border-white/60 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/20 w-full sm:w-52 h-14 backdrop-blur-sm flex items-center justify-center"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             <span className="flex items-center justify-center gap-2">
-              Get In Touch
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>Get In Touch</span>
+              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
               </svg>
             </span>
           </button>
         </motion.div>
 
-        {/* Enhanced Scroll Indicator */}
+        {/* Enhanced Professional Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="mt-20 cursor-pointer"
+          className="mt-20 cursor-pointer group relative"
           onClick={() => {
             const aboutSection = document.getElementById('about');
             if (aboutSection) {
               aboutSection.scrollIntoView({ behavior: 'smooth' });
             }
           }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
+          {/* Advanced animated border ring */}
           <motion.div 
+            className="absolute inset-0 rounded-full border-2 border-white/20 w-16 h-16 left-1/2 top-1/2 -translate-x-1/2 -translate-y-8"
             animate={{ 
-              y: [0, -12, 0],
-              scale: [1, 1.02, 1]
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.5, 0.2],
+              rotate: [0, 180, 360]
             }}
             transition={{ 
-              duration: 3, 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+          />
+          
+          <motion.div 
+            animate={{ 
+              y: [0, -15, 0],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              duration: 3.2, 
               repeat: Infinity, 
               ease: [0.25, 0.46, 0.45, 0.94],
               repeatType: "mirror"
             }}
-            className="flex flex-col items-center group hover:scale-110 transition-all duration-500 filter drop-shadow-lg"
+            className="flex flex-col items-center group hover:scale-110 transition-all duration-500 filter drop-shadow-lg relative z-10"
           >
-            {/* Modern scroll indicator */}
+            {/* Enhanced Modern scroll indicator */}
             <div className="relative">
-              <div className="w-8 h-14 border-2 border-white/40 rounded-full flex justify-center group-hover:border-white/70 transition-all duration-300 shadow-lg">
+              <div className="w-12 h-16 border-2 border-white/50 rounded-full flex justify-center group-hover:border-white/80 transition-all duration-500 shadow-xl bg-white/5 backdrop-blur-sm group-hover:bg-white/10">
+                {/* Pulse effect inside */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100"
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0, 0.3, 0]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    ease: "easeOut"
+                  }}
+                />
+                
+                {/* Enhanced animated mouse scroll */}
                 <motion.div
-                  animate={{ y: [2, 10, 2] }}
+                  animate={{ 
+                    y: [3, 14, 3],
+                    scaleY: [1, 1.3, 1],
+                    opacity: [0.7, 1, 0.7]
+                  }}
                   transition={{ 
                     duration: 2.5, 
                     repeat: Infinity, 
-                    ease: [0.25, 0.46, 0.45, 0.94],
+                    ease: [0.4, 0, 0.2, 1],
                     repeatType: "mirror"
                   }}
-                  className="w-1.5 h-3 bg-white/70 rounded-full mt-2.5 group-hover:bg-white/90 transition-all duration-300 shadow-sm"
-                />
+                  className="w-2 h-4 bg-white/80 rounded-full mt-3 group-hover:bg-white transition-all duration-300 shadow-lg relative"
+                >
+                  {/* Glowing trail effect */}
+                  <motion.div 
+                    className="absolute inset-0 bg-white/50 rounded-full blur-sm"
+                    animate={{ 
+                      scaleY: [0, 1.5, 0],
+                      opacity: [0, 0.8, 0]
+                    }}
+                    transition={{ 
+                      duration: 2.5, 
+                      repeat: Infinity, 
+                      ease: [0.4, 0, 0.2, 1],
+                      delay: 0.4
+                    }}
+                  />
+                </motion.div>
               </div>
-              {/* Subtle glow effect */}
-              <div className="absolute inset-0 rounded-full bg-white/5 blur-md group-hover:bg-white/10 transition-all duration-300"></div>
+              
+              {/* Enhanced glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/15 via-white/8 to-transparent blur-xl group-hover:from-white/25 group-hover:via-white/15 transition-all duration-500"></div>
             </div>
             
-            {/* Professional text hint with enhanced smooth animation */}
+            {/* Professional animated text with advanced effects */}
             <motion.span 
               animate={{ 
                 y: [0, -8, 0],
-                opacity: [0.6, 0.85, 0.6]
+                opacity: [0.7, 1, 0.7],
+                letterSpacing: ['0.1em', '0.18em', '0.1em']
               }}
               transition={{ 
-                duration: 3, 
+                duration: 3.8, 
                 repeat: Infinity, 
                 ease: [0.25, 0.46, 0.45, 0.94],
-                delay: 0.15,
+                delay: 0.3,
                 repeatType: "mirror"
               }}
-              className="text-white/60 text-sm font-medium group-hover:text-white/90 transition-all duration-500 mt-4 tracking-widest uppercase"
+              className="text-white/70 text-sm font-semibold group-hover:text-white group-hover:scale-110 transition-all duration-500 mt-6 tracking-[0.15em] uppercase relative"
             >
-              DISCOVER MORE
+              {/* Text glow effect */}
+              <span className="absolute inset-0 blur-sm opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+                DISCOVER MORE
+              </span>
+              <span className="relative z-10">DISCOVER MORE</span>
+              
+              {/* Animated underline */}
+              <motion.div 
+                className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-white/60 group-hover:bg-white"
+                animate={{ 
+                  width: ['0%', '80%', '0%'],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{ 
+                  duration: 4.5, 
+                  repeat: Infinity, 
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 1.2
+                }}
+              />
             </motion.span>
           </motion.div>
         </motion.div>
