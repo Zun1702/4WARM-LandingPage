@@ -49,7 +49,7 @@ const Photography = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
-    <section id="photography" className="py-20 px-6 bg-primary-gray">
+    <section id="photography" className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
