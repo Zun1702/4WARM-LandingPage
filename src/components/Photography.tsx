@@ -164,7 +164,7 @@ const Photography = () => {
           </button>
           
           <p className="text-primary-charcoal/60 text-sm mt-4 max-w-md mx-auto">
-            Ready to capture your special moments? Let's create something beautiful together.
+            Ready to capture your special moments? Let&apos;s create something beautiful together.
           </p>
         </motion.div>
       </div>
