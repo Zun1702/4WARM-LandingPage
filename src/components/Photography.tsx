@@ -175,7 +175,7 @@ const Photography = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+          className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
@@ -183,7 +183,7 @@ const Photography = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative max-w-5xl w-full mx-auto"
+            className="relative"
             onClick={(e) => e.stopPropagation()}
           >
             {(() => {
@@ -192,14 +192,14 @@ const Photography = () => {
               
               return (
                 <>
-                  <div className="relative w-full max-h-[80vh] flex items-center justify-center">
+                  <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl max-w-4xl max-h-[85vh] mx-auto">
                     <Image
                       src={photo.image}
                       alt={photo.title}
                       width={1200}
                       height={800}
-                      className="max-w-full max-h-full object-contain rounded-lg"
-                      style={{ width: 'auto', height: 'auto' }}
+                      className="w-full h-full object-contain"
+                      style={{ maxWidth: '100%', maxHeight: '85vh' }}
                     />
                   </div>
                   
@@ -213,21 +213,21 @@ const Photography = () => {
                     </svg>
                   </button>
 
-                  {/* Photo Info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8 rounded-b-lg">
+                  {/* Photo Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6 rounded-b-lg">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-3xl font-bold text-white mb-3 leading-tight">{photo.title}</h3>
+                        <h3 className="text-2xl font-bold text-white mb-2 leading-tight">{photo.title}</h3>
                         <div className="flex items-center space-x-3">
-                          <span className="px-4 py-2 bg-warm-yellow/20 text-warm-yellow font-semibold rounded-full text-sm border border-warm-yellow/30">
+                          <span className="px-3 py-1 bg-warm-yellow/20 text-warm-yellow font-semibold rounded-full text-sm border border-warm-yellow/30">
                             {photo.category}
                           </span>
                           <div className="flex items-center space-x-2 text-white/70">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <span className="text-sm font-medium">Photography</span>
+                            <span className="text-xs font-medium">Photography</span>
                           </div>
                         </div>
                       </div>
