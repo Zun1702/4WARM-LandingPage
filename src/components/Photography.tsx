@@ -92,7 +92,7 @@ const Photography = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
         >
-          {photographyData.map((photo, index) => (
+          {photographyData.map((photo) => (
             <motion.div
               key={photo.id}
               variants={staggerItem}

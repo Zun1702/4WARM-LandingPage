@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { heroTitle, heroSubtitle, heroCTA } from '@/lib/animations';
-import Image from 'next/image';
 
 const Hero = () => {
   return (
